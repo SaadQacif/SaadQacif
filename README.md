@@ -2,8 +2,7 @@
 
 **AI engineer and theoretical/applied mathematician, working toward quantitative research.**
 
-Ranked first of class in AI Engineering at ENSIAS with highest distinctions and Valedictorian of MIT's Statistics and Data Science
-MicroMasters. I work where stochastic modelling, statistical inference, and large-scale
+Valedictorian of MIT's Statistics and Data Science MicroMasters and ranked first of class in AI Engineering at ENSIAS with highest distinctions and . I work where stochastic modelling, statistical inference, and large-scale
 computation meet decision-making under uncertainty.
 
 ---
