@@ -2,7 +2,7 @@
 
 **AI engineer and theoretical/applied mathematician, working toward quantitative research.**
 
-Valedictorian of MIT's Statistics & Data Science MicroMasters and in AI
+Valedictorian of MIT's Statistics & Data Science MicroMasters and AI
 Engineering at ENSIAS with highest distinction. I work where stochastic modelling, statistical
 inference, and large-scale computation meet decision-making under uncertainty.
 
@@ -10,18 +10,13 @@ inference, and large-scale computation meet decision-making under uncertainty.
 
 ### Focus
 
-**Sequential decision-making under uncertainty.** Reinforcement learning with leakage-free
-rewards and honest out-of-sample evaluation.
+**Sequential decision-making under uncertainty.** Reinforcement learning with leakage-free rewards and honest out-of-sample evaluation.
 
-**Stochastic modelling and forecasting.** State-space models, Gaussian processes, Monte-Carlo
-simulation, first-principles simulators.
+**Stochastic modelling and forecasting.** State-space models, Gaussian processes, Monte-Carlo simulation, principles-oriented simulators.
 
-**AI systems engineering.** Multi-agent LLM pipelines with retrieval and tool orchestration,
-computer vision for industrial inspection, and models shipped as containerised services with
-REST APIs, CI/CD, and C++ inference engines.
+**AI systems engineering.** Multi-agent LLM pipelines with retrieval and tool orchestration, computer vision for industrial inspection, and models shipped as containerised services with REST APIs.
 
-**Quantitative finance.** Systematic strategy design, walk-forward backtesting, risk-adjusted
-performance.
+**Quantitative finance.** Systematic strategy design, walk-forward backtesting, risk-adjusted performance.
 
 ---
 
