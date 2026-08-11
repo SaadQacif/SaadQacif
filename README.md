@@ -1,6 +1,6 @@
 # Saâd Qacif
 
-**AI engineer and applied mathematician, working toward quantitative research.**
+**AI engineer and theoretical/applied mathematician, working toward quantitative research.**
 
 Ranked first of class in AI Engineering at ENSIAS and in MIT's Statistics and Data Science
 MicroMasters. I work where stochastic modelling, statistical inference, and large-scale
