@@ -54,7 +54,8 @@ ACF, and PACF diagnostics.
 
 **MIT (MITx)**, MicroMasters in Statistics and Data Science · 2024-2026
 Valedictorian, 1st of cohort · GPA 4.9/5.0 ·
-[verify](https://credentials.edx.org/credentials/3df8955447f449c483424a0e146d8344/)
+[verify](https://credentials.edx.org/credentials/3df8955447f449c483424a0e146d8344/) ·
+[letter of accomplishment](https://micromasters.mit.edu/letter/program/5bd0be37-f8e6-4bbf-b723-cf1b6877e9b5)
 Probability (6.431x) · Fundamentals of Statistics (18.6501x) · Machine Learning with Python
 (6.86x) · Data Analysis (14.310x)
 
