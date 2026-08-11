@@ -30,17 +30,18 @@ under a reward that uses no identity labels and explicitly penalises deletion sh
 Sequence-specific biases have non-zero conditional mean but vanish under aggregation, so the
 fitted policy estimates the population correction and transfers to held-out sequences.
 
-**Real-time digital twin, sulfuric-acid DCDA process** · *ITX-UM6P / OCP*
+**[Real-time digital twin, sulfuric-acid DCDA process](https://github.com/Ismailea4/ITX-H2SO4-Digital-Twin)** · *ITX-UM6P / OCP*
 Built the dynamic layer: a first-principles stochastic simulator (van 't Hoff equilibrium by
 vectorised Newton iteration, adiabatic bed energy balances, catalyst-decay kinetics, sensor
 noise) generating 8k multivariate sequences, then benchmarked Liquid Neural Networks, TCNs, and
 S4 state-space models on 12-variable horizon forecasting, reaching R² = 0.985 and MAPE 0.46%.
 Shipped a static-memory-allocation C++ inference engine.
 
-**Deep RL for systematic trading**
-Trading environment design (state, action, reward), RL agents for execution and position
-sizing, and a full research pipeline from data ingestion and feature construction through
-walk-forward backtesting to risk-adjusted evaluation.
+**[Ensemble RL for systematic trading](https://github.com/Ismailea4/Ensemble-RL-Stock-Trader/commit/9a8112e346417c846afd952a164009608b837d13)**
+PPO, A2C, and DDPG agents implemented from scratch over a DOW30 portfolio environment (OHLCV
+plus MACD, RSI, CCI, and ADX features) under realistic transaction costs. A rolling-window
+validation selector allocates to the agent with the highest out-of-sample Sharpe ratio each
+period. Shipped as a Dockerised FastAPI and Streamlit service with equity-curve reporting.
 
 **Stochastic and time-series modelling** · *MIT*
 Gaussian-process modelling of ocean-current velocity fields with Monte-Carlo particle
