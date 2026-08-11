@@ -10,16 +10,18 @@ computation meet decision-making under uncertainty.
 
 ### Focus
 
-- **Sequential decision-making under uncertainty** — reinforcement learning with leakage-free
-  rewards and honest out-of-sample evaluation
-- **Stochastic modelling and forecasting** — state-space models, Gaussian processes,
-  Monte-Carlo simulation, first-principles simulators
-- **Quantitative finance** — systematic strategy design, walk-forward backtesting,
-  risk-adjusted performance
+**Sequential decision-making under uncertainty.** Reinforcement learning with leakage-free
+rewards and honest out-of-sample evaluation.
+
+**Stochastic modelling and forecasting.** State-space models, Gaussian processes, Monte-Carlo
+simulation, first-principles simulators.
+
+**Quantitative finance.** Systematic strategy design, walk-forward backtesting, risk-adjusted
+performance.
 
 ---
 
-### Selected work
+### Projects
 
 **[Law-of-Large-Numbers-Based Graph Deep RL](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking)**
 A policy-gradient framework for multi-object state estimation. An input-conditioned
@@ -28,11 +30,11 @@ under a reward that uses no identity labels and explicitly penalises deletion sh
 Sequence-specific biases have non-zero conditional mean but vanish under aggregation, so the
 fitted policy estimates the population correction and transfers to held-out sequences.
 
-**Real-time digital twin — sulfuric-acid DCDA process** · *ITX-UM6P / OCP*
+**Real-time digital twin, sulfuric-acid DCDA process** · *ITX-UM6P / OCP*
 Built the dynamic layer: a first-principles stochastic simulator (van 't Hoff equilibrium by
 vectorised Newton iteration, adiabatic bed energy balances, catalyst-decay kinetics, sensor
 noise) generating 8k multivariate sequences, then benchmarked Liquid Neural Networks, TCNs, and
-S4 state-space models on 12-variable horizon forecasting — best R² = 0.985, MAPE 0.46%.
+S4 state-space models on 12-variable horizon forecasting, reaching R² = 0.985 and MAPE 0.46%.
 Shipped a static-memory-allocation C++ inference engine.
 
 **Deep RL for systematic trading**
@@ -49,27 +51,20 @@ ACF, and PACF diagnostics.
 
 ### Education
 
-**MIT (MITx)** — MicroMasters, Statistics and Data Science · 2024–2026
+**MIT (MITx)**, MicroMasters in Statistics and Data Science · 2024-2026
 Valedictorian, 1st of cohort · GPA 4.9/5.0 ·
 [verify](https://credentials.edx.org/credentials/3df8955447f449c483424a0e146d8344/)
 Probability (6.431x) · Fundamentals of Statistics (18.6501x) · Machine Learning with Python
 (6.86x) · Data Analysis (14.310x)
 
-**ENSIAS, Mohammed V University** — AI Engineering (2IA) · 2023–2026
-Valedictorian, Pure Mathematics & AI track · Highest Distinction
-
-**Ibn Timiya Preparatory Classes** — MPSI / MP* · 2021–2023
-Real and complex analysis, linear algebra, topology, differential equations, probability
-
 ---
 
 ### Toolbox
 
-`Python` `C++` `JAX` `PyTorch` `NumPy` `pandas` `scikit-learn` `SQL` `Docker` `Git` `Linux`
+`Python` `C++` `JAX` `PyTorch` `NumPy` `pandas` `scikit-learn` `SQL`
 
 ---
 
 ### Contact
 
-[qacifsaad@gmail.com](mailto:qacifsaad@gmail.com) ·
-[LinkedIn](https://www.linkedin.com/in/saad-qacif-35055b29b)
+[qacifsaad@gmail.com](mailto:qacifsaad@gmail.com)
