@@ -2,7 +2,7 @@
 
 **AI engineer and theoretical/applied mathematician, working toward quantitative research.**
 
-Valedictorian of MIT's Statistics & Data Science MicroMasters and AI
+Valedictorian of both MIT's Statistics & Data Science MicroMasters and AI
 Engineering at ENSIAS with highest distinction. I work where stochastic modelling, statistical
 inference, and large-scale computation meet decision-making under uncertainty.
 
@@ -60,8 +60,7 @@ Probability (6.431x) · Fundamentals of Statistics (18.6501x) · Machine Learnin
 
 **ENSIAS, Mohammed V University**, AI Engineering (2IA) · 2023-2026
 Valedictorian, Pure Mathematics & AI track · Highest Distinction
-Ranked 1st of the 2IA promotion. Advanced machine and reinforcement learning algorithms
-along with numerical methods.
+Advanced machine and reinforcement learning algorithms along with numerical methods.
 
 **Ibn Timiya Preparatory Classes**, MPSI / MP* · 2021-2023
 Marrakech. Real and complex analysis, linear algebra, topology, differential equations,
