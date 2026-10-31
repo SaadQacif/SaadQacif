@@ -2,6 +2,18 @@
 
 **AI engineer working across mathematical modelling, statistical inference, and sequential decision-making.**
 
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=20&duration=2600&pause=700&color=58A6FF&center=true&vCenter=true&width=900&height=48&lines=Ranked+1st+%C2%B7+MITx+Statistics+and+Data+Science+MicroMasters;Ranked+1st+%C2%B7+AI+Engineering+at+ENSIAS;Information+priced+in+currency+%C2%B7+exact+CARA-Gaussian+fee;94+oracle-checked+tests+%C2%B7+95.13%25+coverage+at+nominal+95%25;Graph+RL+%C2%B7+Hungarian-matched+rewards+that+deletion+cannot+game;Law+of+large+numbers+%C2%B7+averaging+out+sequence-specific+bias" alt="Ranked first in the MITx Statistics and Data Science MicroMasters and in AI Engineering at ENSIAS; information priced in currency with an exact CARA-Gaussian fee; 94 oracle-checked tests and 95.13% coverage at nominal 95%; graph RL with Hungarian-matched rewards that deletion cannot game; a law-of-large-numbers argument for averaging out sequence-specific bias" />
+
+![Python](https://img.shields.io/badge/python-%233670A0.svg?style=for-the-badge&logo=python&logoColor=ffdd54)
+![C++](https://img.shields.io/badge/c%2B%2B-%2300599C.svg?style=for-the-badge&logo=cplusplus&logoColor=white)
+![JAX](https://img.shields.io/badge/JAX-%23A142F4.svg?style=for-the-badge&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=pytorch&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
 I build research-driven AI systems for decisions under uncertainty. My interests span graph reinforcement learning, stochastic modelling, scientific machine learning, and quantitative research. I was ranked first in my MITx Statistics and Data Science MicroMasters cohort and in AI Engineering at ENSIAS.
 
 ## Featured research · Decision-aware financial information transport
@@ -89,10 +101,6 @@ Ranked first in the 2IA promotion, with highest distinction; advanced machine le
 **Ibn Timiya Preparatory Classes · MPSI / MP\*** · 2021–2023
 
 Mathematics and physics preparation spanning analysis, algebra, topology, differential equations, and probability.
-
-## Tools
-
-Python · C++ · JAX · PyTorch · NumPy · SciPy · pandas · scikit-learn · SQL
 
 ## Contact
 
