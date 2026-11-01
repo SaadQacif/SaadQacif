@@ -53,25 +53,94 @@ In the synthetic misspecification studies, the correctly specified models give 9
 
 **Inspect the work:** [method and theorems](https://github.com/SaadQacif/dynamax/blob/Saad-The-Financial-Markets-Alchemist/fininfo/README.md) · [JAX kernels](https://github.com/SaadQacif/dynamax/blob/Saad-The-Financial-Markets-Alchemist/fininfo/core.py) · [tests](https://github.com/SaadQacif/dynamax/tree/Saad-The-Financial-Markets-Alchemist/fininfo/tests) · [results](https://github.com/SaadQacif/dynamax/blob/Saad-The-Financial-Markets-Alchemist/fininfo/results/results.json)
 
+
 ## Featured research · Graph RL for soccer-player tracking
 
-**[Law-of-Large-Numbers-Based Graph Deep RL](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking)** asks how to recover the soccer players a detector misses in noisy frame-by-frame footage. The aim is to recover missing players, not to improve a tracking metric by deleting uncertain detections.
+**[Law-of-Large-Numbers-Based Graph Deep RL](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking)** investigates **set-valued state reconstruction under partial observability**: recovering soccer players missed by a noisy video-tracking pipeline, while explicitly measuring the tension between coverage and localization accuracy. It is a tracking experiment, not a claim of financial-market predictability.
 
-The method has three distinct stages. In the first, an upstream tracking pipeline uses Hungarian-based association to turn raw detections into estimated player positions $\tilde X_t$. In the second, an input-conditioned slot-attention policy $\pi_\theta$, trained by policy gradient, takes those estimated positions and proposes body completions $\hat X_t$ for the players the pipeline has missed. In the third, which happens during training only, Opta positions grade the proposals through nearest-distance scoring. The Opta positions are never inputs to the policy.
+**From imperfect observations to a learned set-valued policy.** Let $O_t=\{(\tilde p_{ti},u_{ti})\}_{i=1}^{n_t}$ denote the upstream tracker's estimated positions and match-agnostic features, where $\tilde p_{ti}\in\mathbb R^2$ is pitch-normalized and $u_{ti}$ contains speed, confidence, tracking state, team, and reconstruction metadata. Upstream Hungarian-based association constructs those track estimates; the learned policy does **not** observe the reference Opta set $G_t$ at inference time. Its task is to produce a reconstructed player set $\widehat X_t=F_\theta(O_t)$.
 
-Keeping the reference positions out of the inputs means the policy must complete the scene from what the tracker estimated. At inference time it needs nothing beyond the tracker's output.
-
-The law-of-large-numbers argument is the design motivation for training across many stretches of footage rather than one. Suppose the correction that chunk $k$ calls for is a shared correction $g$ plus a chunk-specific bias, $g_k = g + b_k$. Such a bias persists within a chunk because its cause, such as a camera angle or a recurring detector failure, persists. If the biases averaged out over an idealised population of independent chunks, with $\mathbb E[b_k] = 0$, the pooled target would recover the shared correction:
+**Attention as a data-dependent interaction graph.** The implementation encodes each observed body as $h_i=\phi_\theta([u_{ti},\tilde p_{ti}])$ and initializes **22 input-conditioned latent slots**. At each of three refinement iterations, the soft links from candidate slot $j$ to observed body $i$ are
 
 ```math
-\frac{1}{K} \sum_{k=1}^{K} g_k \;\longrightarrow\; g \qquad \text{almost surely as } K \to \infty .
+\alpha_{ji}^{(\ell)}=
+\frac{\exp\!\left(\langle W_Qz_j^{(\ell)},W_Kh_i\rangle/\sqrt d\right)}
+{\sum_{r=1}^{n_t}\exp\!\left(\langle W_Qz_j^{(\ell)},W_Kh_r\rangle/\sqrt d\right)},
+\qquad m_j^{(\ell)}=\sum_{i=1}^{n_t}\alpha_{ji}^{(\ell)}W_Vh_i.
 ```
 
-This is a heuristic, not a guarantee. Consecutive chunks of footage are neither independent nor identically distributed, and the argument says nothing about how many chunks are enough. Whether pooling helps is therefore an empirical question, and the experiments below test it on one separate block of frames.
+The row-stochastic matrix $A_t^{(\ell)}=[\alpha_{ji}^{(\ell)}]$ is an **input-adaptive weighted bipartite graph** between latent player slots and observations, not a fixed physical adjacency matrix. Residual, feed-forward and layer-normalization operations refine the slot embeddings. The output layer predicts bounded pitch-normalized coordinates and activation decisions:
 
-**Results.** The footage is split into chunks of roughly 500 consecutive frames. Recall is the fraction of players the system recovers.
+```math
+\widehat p_{tj}=\tanh\!\left(p_{tj}^{(0)}+0.3\tanh f_{\theta,p}(z_{tj}^{(3)})\right),\qquad
+\widehat X_t=\left\{D\widehat p_{tj}:\ell_{\theta,j}(O_t)>0\right\},\quad
+D=\operatorname{diag}(52.5,34).
+```
 
-**The key result is that the policy improved recall on a separate block of consecutive frames (chunks 51–100), a block with only about a quarter as many detections.**
+Here $p_{tj}^{(0)}$ is an attention-weighted initialization from observed positions, $\ell_{\theta,j}$ is an activation logit, and $D$ converts normalized coordinates to metres. The set representation avoids assigning an artificial, permanent identity to each output slot.
+
+**A two-sided statistical scoring problem.** With reference positions $G_t$ used **only to score training and evaluation**, the implemented coverage metric is a directed nearest-neighbour recall at a 6 m tolerance, while localization is measured from active predictions toward reference positions:
+
+```math
+\operatorname{Rec}_6(\widehat X_t,G_t)
+=\frac{1}{|G_t|}\sum_{g\in G_t}
+\mathbf1\!\left\{\min_{x\in\widehat X_t}\|x-g\|_2\le 6\,\mathrm m\right\},
+\qquad
+E_t=\operatorname{median}_{x\in\widehat X_t}
+\min_{g\in G_t}\|x-g\|_2.
+```
+
+For each training batch $B$, the script computes $\overline{\operatorname{Rec}}_{6,B}$ as the mean frame recall and $E_B$ as the median distance pooled over active predictions. The implemented, dimensionless reward is
+
+```math
+R_B=\min\!\left(\frac{\overline{\operatorname{Rec}}_{6,B}}{0.60},1\right)
++\min\!\left(\frac{3.1\,\mathrm m}{\max(E_B,0.01\,\mathrm m)},1\right).
+```
+
+Thus coverage and position error enter as **separate saturating objectives**, making the precision–recall trade-off explicit. These are directed nearest-neighbour metrics, **not** a one-to-one Hungarian matching objective; Hungarian association belongs to the upstream tracking stage.
+
+**Stochastic decisions and the actual optimization surrogate.** During training, Gaussian perturbations of the slot logits induce binary activation actions:
+
+```math
+\varepsilon_{tj}\sim\mathcal N(0,0.5^2),\qquad
+A_{tj}=\mathbf1\{\ell_{\theta,j}(O_t)+\varepsilon_{tj}>0\},\qquad
+\mathbb P_\theta(A_{tj}=1\mid O_t)=\Phi\!\left(\frac{\ell_{\theta,j}(O_t)}{0.5}\right).
+```
+
+The script then applies a **score-function-style surrogate**, with advantage $\widehat{\mathcal A}=R_B(A)-R_B(A^{\mathrm{det}})+0.05$ and an average binary log-likelihood evaluated at the noise-perturbed logits:
+
+```math
+\mathcal L_{\mathrm{impl}}(\theta)
+=-\widehat{\mathcal A}\;\frac{1}{|B|\,22}
+\sum_{t\in B}\sum_{j=1}^{22}
+\left[A_{tj}\log\sigma(\ell_{tj}+\varepsilon_{tj})
++(1-A_{tj})\log\bigl(1-\sigma(\ell_{tj}+\varepsilon_{tj})\bigr)\right].
+```
+
+This formula describes the **implemented update**, rather than claiming an exact policy-gradient theorem: thresholded Gaussian sampling has a probit action distribution, while the surrogate uses a sigmoid likelihood. Moreover, the position head receives no direct gradient through this discrete reward computation. These are concrete optimization limitations, not established convergence or optimality guarantees.
+
+**Law of large numbers: the assumption and its failure mode.** The central statistical intuition is that the correction needed for video chunk $k$ can be decomposed into a shared component $g$ and a chunk-specific distortion $b_k$, caused for example by camera viewpoint or recurring detection errors. **If** $b_k$ are integrable, independent and identically distributed with zero mean, the strong law yields
+
+```math
+g_k=g+b_k,\qquad \mathbb E[b_k]=0,\qquad
+\widehat g_K=\frac{1}{K}\sum_{k=1}^{K}g_k
+\xrightarrow[K\to\infty]{\mathrm{a.s.}}g.
+```
+
+That limiting result is **conditional**, not an empirical theorem about consecutive football footage. In the non-independent case, the uncertainty of the pooled bias instead depends on all cross-chunk covariances:
+
+```math
+\operatorname{Cov}(\overline b_K)
+=\frac{1}{K^2}\sum_{k=1}^{K}\sum_{l=1}^{K}
+\operatorname{Cov}(b_k,b_l),\qquad
+\overline b_K=\frac{1}{K}\sum_{k=1}^{K}b_k.
+```
+
+Persistent temporal dependence can therefore make $K$ chunks worth substantially fewer than $K$ independent observations. Neither zero-mean bias nor the required mixing conditions have been demonstrated for these experiments; **cross-chunk generalization remains an empirical claim**.
+
+**Results.** Footage was divided into chunks of roughly 500 consecutive frames. The reported recall measures how many reference players are recovered within the localization tolerance.
+
+**The key empirical result is improved recall on a separate, substantially sparser block of consecutive frames (chunks 51–100).**
 
 | Block | Detected bodies | Threshold | Baseline recall | RL recall | Change |
 | --- | ---: | :---: | ---: | ---: | ---: |
@@ -79,17 +148,17 @@ This is a heuristic, not a guarantee. Consecutive chunks of footage are neither 
 | Chunks 51–100, transfer test | 48,548 | 0.10 | 23.0% | 28.0% | +5.0 pts |
 | Chunks 51–100, transfer test | 48,548 | 0.17 | 23.0% | 27.7% | +4.7 pts |
 
-The transfer gain is smaller than the +14.4 points on chunks 0–50. It is still a relative improvement of about 22% in recall, and it holds at both thresholds. The transfer block contains about 4.2 times fewer detected bodies, so the policy has much less observed context to complete from. That is a plausible reason for the smaller gain, but these experiments do not isolate it as the cause.
+On the transfer block, the absolute gain of **5.0 percentage points** corresponds to approximately **21.7% relative recall improvement** at threshold 0.10; at threshold 0.17, the gain is 4.7 points. The transfer block contains approximately **4.2 times fewer detected bodies** than chunks 0–50. This change in observational density is a plausible contributor to the smaller gain, but its causal role has not been isolated.
 
-The improvement is not free. At threshold 0.10, median localization error rose from 4.37 m to 4.61 m: the policy recovers more players, but places them slightly less precisely. Over the same comparison, the logged "Bodies" metric rose from 5.8 to 8.1.
+The gain carries a measurable cost: at threshold 0.10, the median localization error rose from **4.37 m to 4.61 m**, while the logged **Bodies** metric rose from **5.8 to 8.1**. The evidence supports **transfer between two blocks of consecutive frames**, not across distinct matches.
 
-This shows transfer to a separate block of consecutive frames; it is not evidence of transfer across matches.
-
-The application is soccer, not markets, but the methods carry over. The headline metric is recall, which discourages deleting uncertain predictions; this guards against the tracking analogue of a backtest that improves by quietly dropping losing trades. Reference data that grades the policy never enters its inputs, the same separation of decision-time information from scoring information that helps guard against look-ahead bias. Separating a shared effect from persistent regime-specific bias is a central difficulty of learning across heterogeneous market regimes. Hungarian association is an instance of the optimal-assignment problems behind many matching and allocation tasks.
+**Quantitative-research relevance.** The transferable ideas are methodological, not domain-specific: (i) a policy must act only on information available at decision time, (ii) coverage and error should be assessed jointly to avoid optimizing a metric by discarding difficult cases, and (iii) dependence across regimes directly limits how much one may infer from pooled samples. These are relevant to portfolio selection, market-regime generalization, and leakage-controlled backtesting, without implying that the tracking model is itself a trading strategy.
 
 **Inspect the work:** [training implementation](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/blob/main/scripts/train_graph_rl_body_completion.py) · [matching code](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/matching) · [tests](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/tests) · [experiment notes](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/sessions)
 
 These aggregate results come from private experiment logs; the underlying data, full logs, and trained weights are not public.
+
+
 
 ## Selected engineering and applied research
 
