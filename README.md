@@ -2,7 +2,7 @@
 
 **AI engineer working across mathematical modelling, statistical inference, and sequential decision-making.**
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=20&duration=2600&pause=700&color=58A6FF&center=true&vCenter=true&width=900&height=48&lines=Ranked+1st+%C2%B7+MITx+Statistics+and+Data+Science+MicroMasters;Ranked+1st+%C2%B7+AI+Engineering+at+ENSIAS;Information+priced+in+currency+%C2%B7+exact+CARA-Gaussian+fee;94+oracle-checked+tests+%C2%B7+95.13%25+coverage+at+nominal+95%25;Graph+RL+%C2%B7+Hungarian-matched+rewards+that+deletion+cannot+game;Law+of+large+numbers+%C2%B7+averaging+out+sequence-specific+bias" alt="Ranked first in the MITx Statistics and Data Science MicroMasters and in AI Engineering at ENSIAS; information priced in currency with an exact CARA-Gaussian fee; 94 oracle-checked tests and 95.13% coverage at nominal 95%; graph RL with Hungarian-matched rewards that deletion cannot game; a law-of-large-numbers argument for averaging out sequence-specific bias" />
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=20&duration=2600&pause=700&color=58A6FF&center=true&vCenter=true&width=900&height=48&lines=Valedictorian+%C2%B7+MITx+Statistics+%26+Data+Science+MicroMasters+%C2%B7+GPA+4.9%2F5;Valedictorian+%C2%B7+AI+Engineering%2C+ENSIAS+%C2%B7+highest+distinction;Model+news+correlation%3A+95%25+intervals+cover+95.0%25%2C+not+91.2%25;Model+source+reliability%3A+coverage+95.1%25%2C+not+72.5%25+under+blind+trust;Right+variance%2C+wrong+shape%3A+a+Gaussian+fit+under-covers+at+z+%3D+%E2%88%923.0;94+tests+cross-check+the+theory+by+Monte+Carlo%2C+quadrature%2C+algebra;Simulated+acid-plant+twin%3A+98.5%25+of+variance+explained%2C+0.46%25+error" alt="Valedictorian of the MITx Statistics and Data Science MicroMasters (GPA 4.9/5) and of AI Engineering at ENSIAS with highest distinction. Modelling the correlation between news sources keeps nominal 95% intervals at 95.0% coverage instead of 91.2%. Modelling source reliability gives 95.1% coverage instead of 72.5% under blind trust. A Gaussian with the right variance but the wrong shape under-covers by 3.0 standard errors. 94 tests cross-check the theory by Monte Carlo simulation, numerical quadrature and exact algebra. A simulated acid-plant digital twin explains 98.5% of forecast variance with 0.46% mean absolute percentage error." />
 
 ![Python](https://img.shields.io/badge/python-%233670A0.svg?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![C++](https://img.shields.io/badge/c%2B%2B-%2300599C.svg?style=for-the-badge&logo=cplusplus&logoColor=white)
@@ -14,7 +14,7 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-I build research-driven AI systems for decisions under uncertainty. My interests span graph reinforcement learning, stochastic modelling, scientific machine learning, and quantitative research. I was ranked first in my MITx Statistics and Data Science MicroMasters cohort and in AI Engineering at ENSIAS.
+I build research-driven AI systems for decisions under uncertainty. My interests span graph reinforcement learning, stochastic modelling, scientific machine learning, and quantitative research. I was valedictorian of both the MITx Statistics and Data Science MicroMasters and AI Engineering at ENSIAS.
 
 ## Featured research · Decision-aware financial information transport
 
@@ -40,7 +40,7 @@ c_{\text{info}} = \frac{1}{2\gamma} \log \frac{\det \Sigma}{\det \Sigma_+} = \fr
 
 The package also covers the cases where this simple picture breaks down. Correlated packets are residualised with $A = R_{21}R_{11}^{-1}$, so sequential updating reproduces the batch update exactly. Shapley attribution of packets is nonnegative and efficient. A two-packet counterexample with $v(\lbrace 2\rbrace) = 0 \lt v(\lbrace 1,2\rbrace) - v(\lbrace 1\rbrace)$ nonetheless shows that the value of information is not submodular, so greedy selection guarantees do not carry over. Integrated-gradient attribution over transition edges sums exactly to the change in the response. Yet it depends on the chosen basis, so individual latent links have no intrinsic economic meaning. Discounted cash flows are projected with their cross-horizon dependence intact. Finally, a source that may be uninformative, with an arbitrary null density $f_0$, yields a posterior mixture whose variance can exceed the prior's.
 
-Each kernel is tested against an independent route: joint-Gaussian Schur complements, SciPy densities, high-order quadrature or Monte Carlo simulation. Integration tests run against real `LinearGaussianSSM.filter` outputs.
+The kernels are tested against independent routes: joint-Gaussian Schur complements, SciPy densities, high-order quadrature or Monte Carlo simulation. Integration tests run against real `LinearGaussianSSM.filter` outputs.
 
 In the synthetic misspecification studies, the correctly specified models give 95% intervals that cover 94.97% (correlated packets) and 95.13% (unreliable source). Ignoring the packet correlation drops coverage to 91.15%, and always trusting an unreliable source drops it to 72.54%. These results check the method against its own assumptions; they are not evidence of market predictability.
 
@@ -48,29 +48,41 @@ In the synthetic misspecification studies, the correctly specified models give 9
 
 ## Featured research · Graph RL for soccer-player tracking
 
-**[Law-of-Large-Numbers-Based Graph Deep RL](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking)** asks how to recover the soccer players a detector misses in noisy frame-by-frame footage. It deliberately rules out the cheap route of improving a tracking metric by deleting uncertain detections.
+**[Law-of-Large-Numbers-Based Graph Deep RL](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking)** asks how to recover the soccer players a detector misses in noisy frame-by-frame footage. The aim is to recover missing players, not to improve a tracking metric by deleting uncertain detections.
 
-At each frame the detector returns an incomplete and noisy set of positions, and the task is to output the full set of players on the pitch. The project treats this as set-to-set completion. An input-conditioned slot-attention policy $\pi_\theta$ proposes a position and an activity decision for each slot, and it is trained by policy gradient. Because the output is a set, the policy is scored through an optimal one-to-one (Hungarian) assignment between predicted players $\hat x_i$ and reference players $x_j$,
+The method has three distinct stages. In the first, an upstream tracking pipeline uses Hungarian-based association to turn raw detections into estimated player positions $\tilde X_t$. In the second, an input-conditioned slot-attention policy $\pi_\theta$, trained by policy gradient, takes those estimated positions and proposes body completions $\hat X_t$ for the players the pipeline has missed. In the third, which happens during training only, Opta positions grade the proposals through nearest-distance scoring. The Opta positions are never inputs to the policy.
 
-```math
-\sigma^\star = \arg\min_{\sigma} \sum_{i} \lVert \hat x_i - x_{\sigma(i)} \rVert ,
-```
+Keeping the reference positions out of the inputs means the policy must complete the scene from what the tracker estimated. At inference time it needs nothing beyond the tracker's output.
 
-so the feedback needs no identity labels and does not depend on the order of the slots. The reward combines set-level recall with localization error over the matched pairs, and it explicitly penalises deletion, so dropping an uncertain detection cannot buy a better score.
-
-The law-of-large-numbers argument concerns what such a policy actually learns. Within one sequence $k$, the correction the data calls for is a population correction $g$ plus a sequence-specific bias, $g_k = g + b_k$. That bias has a nonzero mean conditional on the sequence, because whatever causes it, such as a camera angle or a recurring detector failure, persists throughout that sequence. Across sequences drawn independently from the same population, however, $\mathbb E[b_k] = 0$, and so
+The law-of-large-numbers argument is the design motivation for training across many stretches of footage rather than one. Suppose the correction that chunk $k$ calls for is a shared correction $g$ plus a chunk-specific bias, $g_k = g + b_k$. Such a bias persists within a chunk because its cause, such as a camera angle or a recurring detector failure, persists. If the biases averaged out over an idealised population of independent chunks, with $\mathbb E[b_k] = 0$, the pooled target would recover the shared correction:
 
 ```math
 \frac{1}{K} \sum_{k=1}^{K} g_k \;\longrightarrow\; g \qquad \text{almost surely as } K \to \infty .
 ```
 
-A policy fitted on many varied sequences therefore targets the population correction $g$ rather than the idiosyncrasies of any single sequence, in the same way that a pooled estimator averages out regime-specific error. Whether this transfer holds on held-out sequences is an empirical question that the public extract does not settle.
+This is a heuristic, not a guarantee. Consecutive chunks of footage are neither independent nor identically distributed, and the argument says nothing about how many chunks are enough. Whether pooling helps is therefore an empirical question, and the experiments below test it on one separate block of frames.
 
-The application is soccer, not markets, but the reasoning carries over directly. A score that improves when uncertain predictions are discarded is the tracking analogue of a backtest that improves by quietly dropping losing trades; the remedy in both cases is an objective under which the shortcut cannot pay. Separating a population-level effect from persistent regime-specific bias is the central difficulty of learning from heterogeneous market regimes. Set-valued prediction under optimal assignment is the structure behind many matching and allocation problems.
+**Results.** The footage is split into chunks of roughly 500 consecutive frames. Recall is the fraction of players the system recovers.
+
+**The key result is that the policy improved recall on a separate block of consecutive frames (chunks 51–100), a block with only about a quarter as many detections.**
+
+| Block | Detected bodies | Threshold | Baseline recall | RL recall | Change |
+| --- | ---: | :---: | ---: | ---: | ---: |
+| Chunks 0–50 | 205,583 | — | 45.1% | 59.5% (best run) | +14.4 pts |
+| Chunks 51–100, transfer test | 48,548 | 0.10 | 23.0% | 28.0% | +5.0 pts |
+| Chunks 51–100, transfer test | 48,548 | 0.17 | 23.0% | 27.7% | +4.7 pts |
+
+The transfer gain is smaller than the +14.4 points on chunks 0–50. It is still a relative improvement of about 22% in recall, and it holds at both thresholds. The transfer block contains about 4.2 times fewer detected bodies, so the policy has much less observed context to complete from. That is a plausible reason for the smaller gain, but these experiments do not isolate it as the cause.
+
+The improvement is not free. At threshold 0.10, median localization error rose from 4.37 m to 4.61 m: the policy recovers more players, but places them slightly less precisely. Over the same comparison, the logged "Bodies" metric rose from 5.8 to 8.1.
+
+This shows transfer to a separate block of consecutive frames; it is not evidence of transfer across matches.
+
+The application is soccer, not markets, but the methods carry over. The headline metric is recall, which discourages deleting uncertain predictions; this guards against the tracking analogue of a backtest that improves by quietly dropping losing trades. Reference data that grades the policy never enters its inputs, the same separation of decision-time information from scoring information that guards a backtest against look-ahead bias. Separating a shared effect from persistent regime-specific bias is a central difficulty of learning across heterogeneous market regimes. Hungarian association is an instance of the optimal-assignment problems behind many matching and allocation tasks.
 
 **Inspect the work:** [training implementation](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/blob/main/scripts/train_graph_rl_body_completion.py) · [matching code](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/matching) · [tests](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/tests) · [experiment notes](https://github.com/SaadQacif/Law-of-Large-Numbers-Based-Graph-Deep-RL-Tracking/tree/main/sessions)
 
-The public repository is a code-only research extract; licensed media, source data, generated outputs, and trained weights are not redistributed. Cross-sequence transfer remains a research question rather than a result established by this public extract.
+These aggregate results come from private experiment logs; the underlying data, full logs, and trained weights are not public.
 
 ## Selected engineering and applied research
 
@@ -92,11 +104,11 @@ Earlier projects include [classical forecasting and volatility models for mariti
 
 **MITx · Statistics and Data Science MicroMasters credential** · 2024–2026
 
-Ranked first in cohort; GPA 4.9/5.0. [Credential](https://credentials.edx.org/credentials/3df8955447f449c483424a0e146d8344/) · [letter of accomplishment](https://micromasters.mit.edu/letter/program/5bd0be37-f8e6-4bbf-b723-cf1b6877e9b5). Coursework: probability, statistics, machine learning, and data analysis.
+Valedictorian; GPA 4.9/5.0. [Credential](https://credentials.edx.org/credentials/3df8955447f449c483424a0e146d8344/) · [letter of accomplishment](https://micromasters.mit.edu/letter/program/5bd0be37-f8e6-4bbf-b723-cf1b6877e9b5). Coursework: probability, statistics, machine learning, and data analysis.
 
 **ENSIAS, Mohammed V University · AI Engineering (2IA)** · 2023–2026
 
-Ranked first in the 2IA promotion, with highest distinction; advanced machine learning, reinforcement learning, and numerical methods.
+Valedictorian of the 2IA promotion, with highest distinction; advanced machine learning, reinforcement learning, and numerical methods.
 
 **Ibn Timiya Preparatory Classes · MPSI / MP\*** · 2021–2023
 
