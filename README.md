@@ -173,7 +173,9 @@ Turned swarm-intelligence research code into an installable, tested **Python lib
 
 An **equal-budget benchmark** (20,000 evaluations, 15 paired seeds, Wilcoxon tests with Holm correction) shows that no variant significantly outperforms standard ABC on six classical functions; the saved runs and summaries ship with the release. GitHub Actions tests Python 3.10–3.14 and verifies the built wheel in a clean environment; the release files were built from the tagged commit, tested before upload, and published with SHA-256 checksums.
 
-`pip install https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/download/v0.1.0/abc_framework-0.1.0-py3-none-any.whl`
+```bash
+pip install https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/download/v0.1.0/abc_framework-0.1.0-py3-none-any.whl
+```
 
 [v0.1.0 release](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/tag/v0.1.0) · [benchmark results](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/tree/main/benchmarks) · [PolyForm Noncommercial license](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/blob/main/LICENSE.md)
 
