@@ -74,7 +74,7 @@ The row-stochastic matrix $A_t^{(\ell)}=[\alpha_{ji}^{(\ell)}]$ is an **input-ad
 ```math
 \widehat p_{tj}=\tanh\!\left(p_{tj}^{(0)}+0.3\tanh f_{\theta,p}(z_{tj}^{(3)})\right),\qquad
 \widehat X_t=\left\{D\widehat p_{tj}:\ell_{\theta,j}(O_t)>0\right\},\quad
-D=\operatorname{diag}(52.5,34).
+D=\mathrm{diag}(52.5,34).
 ```
 
 Here $p_{tj}^{(0)}$ is an attention-weighted initialization from observed positions, $\ell_{\theta,j}$ is an activation logit, and $D$ converts normalized coordinates to metres. The set representation avoids assigning an artificial, permanent identity to each output slot.
@@ -82,18 +82,18 @@ Here $p_{tj}^{(0)}$ is an attention-weighted initialization from observed positi
 **A two-sided statistical scoring problem.** With reference positions $G_t$ used **only to score training and evaluation**, the implemented coverage metric is a directed nearest-neighbour recall at a 6 m tolerance, while localization is measured from active predictions toward reference positions:
 
 ```math
-\operatorname{Rec}_6(\widehat X_t,G_t)
+\mathrm{Rec}_6(\widehat X_t,G_t)
 =\frac{1}{|G_t|}\sum_{g\in G_t}
 \mathbf1\!\left\{\min_{x\in\widehat X_t}\|x-g\|_2\le 6\,\mathrm m\right\},
 \qquad
-E_t=\operatorname{median}_{x\in\widehat X_t}
+E_t=\mathrm{median}_{x\in\widehat X_t}
 \min_{g\in G_t}\|x-g\|_2.
 ```
 
-For each training batch $B$, the script computes $\overline{\operatorname{Rec}}_{6,B}$ as the mean frame recall and $E_B$ as the median distance pooled over active predictions. The implemented, dimensionless reward is
+For each training batch $B$, the script computes $\overline{\mathrm{Rec}}_{6,B}$ as the mean frame recall and $E_B$ as the median distance pooled over active predictions. The implemented, dimensionless reward is
 
 ```math
-R_B=\min\!\left(\frac{\overline{\operatorname{Rec}}_{6,B}}{0.60},1\right)
+R_B=\min\!\left(\frac{\overline{\mathrm{Rec}}_{6,B}}{0.60},1\right)
 +\min\!\left(\frac{3.1\,\mathrm m}{\max(E_B,0.01\,\mathrm m)},1\right).
 ```
 
@@ -130,9 +130,9 @@ g_k=g+b_k,\qquad \mathbb E[b_k]=0,\qquad
 That limiting result is **conditional**, not an empirical theorem about consecutive football footage. In the non-independent case, the uncertainty of the pooled bias instead depends on all cross-chunk covariances:
 
 ```math
-\operatorname{Cov}(\overline b_K)
+\mathrm{Cov}(\overline b_K)
 =\frac{1}{K^2}\sum_{k=1}^{K}\sum_{l=1}^{K}
-\operatorname{Cov}(b_k,b_l),\qquad
+\mathrm{Cov}(b_k,b_l),\qquad
 \overline b_K=\frac{1}{K}\sum_{k=1}^{K}b_k.
 ```
 
