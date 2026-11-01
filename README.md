@@ -164,6 +164,19 @@ These aggregate results come from private experiment logs; the underlying data, 
 
 ## Selected engineering and applied research
 
+### [Artificial Bee Colony optimization library · released Python package](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-)
+
+[![Tests](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/actions/workflows/tests.yml)
+[![GitHub release](https://img.shields.io/github/v/release/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-?logo=github&label=release)](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/latest)
+
+Turned swarm-intelligence research code into an installable, tested **Python library**, `abc_framework`. Six Artificial Bee Colony variants (standard ABC, simulated-annealing hybrids, a Q-learning-controlled RL-ABC, Queen ABC, multi-colony Queen ABC, and an ABC–flower-pollination hybrid) share one contract: an exact objective-evaluation budget, the best-ever solution returned, seeded reproducibility, and validated settings. The package also tunes SVM hyperparameters with feature scaling fitted inside each cross-validation fold, so no validation or test data leaks into preprocessing.
+
+An **equal-budget benchmark** (20,000 evaluations, 15 paired seeds, Wilcoxon tests with Holm correction) shows that no variant significantly outperforms standard ABC on six classical functions; the saved runs and summaries ship with the release. GitHub Actions tests Python 3.10–3.14 and verifies the built wheel in a clean environment; the release files were built from the tagged commit, tested before upload, and published with SHA-256 checksums.
+
+`pip install https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/download/v0.1.0/abc_framework-0.1.0-py3-none-any.whl`
+
+[v0.1.0 release](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/releases/tag/v0.1.0) · [benchmark results](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/tree/main/benchmarks) · [PolyForm Noncommercial license](https://github.com/SaadQacif/Bio-inspired-Project-Meta-heuristics-Optimization-/blob/main/LICENSE.md)
+
 ### Dynamic modelling for a sulfuric-acid digital twin · team project
 
 In the [ITX H₂SO₄ digital twin](https://github.com/Ismailea4/ITX-H2SO4-Digital-Twin), I contributed a time-aware DCDA process simulator, kinetic-parameter modelling, and forecasting experiments. The dynamic model combines equilibrium and energy-balance calculations, catalyst activity, thermal lag, and sensor noise to generate multivariate sequences for model comparison. In the committed synthetic-data benchmark, the LNN sequence model reports **R² 0.9851** and **MAPE 0.46%**; these are simulator-benchmark results, not live-plant accuracy.
