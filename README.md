@@ -19,7 +19,6 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-%23F37626.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Neo4j](https://img.shields.io/badge/Neo4j-%230086C9.svg?style=for-the-badge&logo=neo4j&logoColor=white)
-![JAX](https://img.shields.io/badge/JAX-%237F52FF.svg?style=for-the-badge&logoColor=white)
 
 
 I build advanced, research-driven AI systems for decisions under uncertainty: graph-attention policies trained with reinforcement learning, bio-inspired metaheuristics that search neural-network architectures and training settings, and probabilistic state-space models. My interests span graph reinforcement learning, stochastic modelling, scientific machine learning, and quantitative research. I was valedictorian of both the MITx Statistics and Data Science MicroMasters and AI Engineering at ENSIAS.
