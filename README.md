@@ -124,7 +124,8 @@ This formula describes the **implemented update**, rather than claiming an exact
 ```math
 g_k=g+b_k,\qquad \mathbb E[b_k]=0,\qquad
 \widehat g_K=\frac{1}{K}\sum_{k=1}^{K}g_k
-\xrightarrow[K\to\infty]{\mathrm{a.s.}}g.
+\longrightarrow g
+\quad (K\to\infty,\ \mathrm{a.s.})
 ```
 
 That limiting result is **conditional**, not an empirical theorem about consecutive football footage. In the non-independent case, the uncertainty of the pooled bias instead depends on all cross-chunk covariances:
