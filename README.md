@@ -13,6 +13,14 @@
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-%23FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-%23000000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-%23F37626.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Neo4j](https://img.shields.io/badge/Neo4j-%230086C9.svg?style=for-the-badge&logo=neo4j&logoColor=white)
+![JAX](https://img.shields.io/badge/JAX-%237F52FF.svg?style=for-the-badge&logoColor=white)
+
 
 I build advanced, research-driven AI systems for decisions under uncertainty: graph-attention policies trained with reinforcement learning, bio-inspired metaheuristics that search neural-network architectures and training settings, and probabilistic state-space models. My interests span graph reinforcement learning, stochastic modelling, scientific machine learning, and quantitative research. I was valedictorian of both the MITx Statistics and Data Science MicroMasters and AI Engineering at ENSIAS.
 
